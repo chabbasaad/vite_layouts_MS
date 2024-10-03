@@ -1,9 +1,23 @@
-@import "/sass/scrollbar.scss";
-
 :root {
-  --main-color: rgb(2, 88, 100);
-  --color-gray: rgb(245, 247, 249);
-  --color-white: rgb(255, 255, 255);
+  /* Light Mode Colors */
+  --main-color: #A60F1B;          /* Primary red from the theme */
+  --color-gray: #f1f4f7;          /* Light gray for a clean appearance */
+  --color-white: #ffffff;         /* Pure white for the background */
+  --color-text: #ffffff;          /* Dark gray text color for better contrast on light backgrounds */
+  --sidebar-bg: #73141B;          /* Dark red for the sidebar */
+  --footer-bg: #a1152f;           /* Bright red for the footer accent */
+  --navbar-bg: #1E2126;           /* Soft black for the navbar in light mode */
+}
+
+.dark-mode {
+  /* Dark Mode Colors */
+  --main-color: #A60F1B;            /* Keep the main color consistent in dark mode */
+  --color-gray: #202122;            /* Darker gray for dark mode background elements */
+  --color-white: #1E2126;           /* Dark gray as a base background in dark mode */
+  --color-text: #ffffff;            /* White text for readability in dark mode */
+  --sidebar-bg: #401519;            /* Very dark red for the sidebar to reduce brightness */
+  --footer-bg: #73141B;             /* Darker red to maintain the theme for the footer in dark mode */
+  --navbar-bg: #333333;             /* Dark slate color for the navbar background in dark mode */
 }
 
 *,
@@ -12,114 +26,195 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
 }
 
 li {
   list-style: none;
 }
+
 a {
   text-decoration: none;
+}
+
+input:focus,
+input:active {
+  outline: none; 
 }
 
 body {
   display: flex;
   min-height: 100vh;
-  background-color: burlywood;
-
-  .sidebar {
-    background-color: var(--color-gray);
-    width: 260px;
-    min-height: 100vh;
-    position: sticky;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-
-    .logo {
-      padding-inline: 20px;
-      display: flex;
-      align-items: center;
-      height: 80px;
-      background-color: transparent;
-      justify-content: space-between;
-      a {
-        img {
-          height: 60px;
-        }
-      }
-      .toggle-side-bar {
-        height: 40px;
-        background-color: var(--color-white);
-        display: flex;
-        align-items: center;
-        border: none;
-        justify-content: center;
-        cursor: pointer;
-
-        width: 28px;
-        height: 28px;
-        border-radius: 4px;
-        i {
-          color: #333;
-          font-size: 22px;
-        }
-      }
-    }
-    .menu-Sidebar {
-      flex: 1;
-      height: 80px;
-      background-color: rgb(216, 219, 214, 0);
-      .menu-first-ul {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        padding: 10px;
-
-        li {
-          height: 40px;
-          a {
-            padding-inline: 10px;
-            height: 40px;
-            color: #000000;
-
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            i {
-              font-size: 20px;
-            }
-          }
-        }
-      }
-    }
-    .footer-sidebar {
-      height: 150px;
-      background-color: rgb(135, 222, 179);
-    }
-  }
-  .content {
-    flex: 1;
-    background-color: rgba(29, 208, 38, 0.914);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    .navbar {
-      background-color: rgba(187, 210, 188);
-      top: 0;
-      width: 100%;
-      height: 80px;
-
-      position: sticky;
-    }
-    .main {
-      background-color: var(--color-white);
-      padding: 20px;
-
-      height: 2700px;
-      flex: 1;
-    }
-  }
+  background-color: var(--color-white);
 }
 
-// ----------------------------------------------------------------
+.sidebar {
+  background-color: var(--sidebar-bg);
+  width: 260px;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .logo {
+  padding-inline: 20px;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background-color: transparent;
+  justify-content: space-between;
+}
+
+.sidebar .logo a img {
+  height: 60px;
+}
+
+.sidebar .menu-Sidebar {
+  flex: 1;
+  background-color: transparent;
+}
+
+.sidebar .menu-Sidebar .menu-first-ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+}
+
+.sidebar .menu-Sidebar .menu-first-ul li {
+  height: 40px;
+}
+
+.sidebar .menu-Sidebar .menu-first-ul li a {
+  padding-inline: 10px;
+  height: 40px;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sidebar .menu-Sidebar .menu-first-ul li a i {
+  font-size: 20px;
+}
+
+.sidebar .footer-sidebar {
+  height: 150px;
+  background-color: var(--footer-bg);
+}
+
+.content {
+  flex: 1;
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content .navbar {
+  background-color: var(--navbar-bg);
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 20px;
+  position: sticky;
+}
+
+.content .navbar .box.toggle button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+}
+
+.content .navbar .box.search {
+  background-color: var(--color-white);
+  height: 32px;
+  width: 360px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.content .navbar .box.search form {
+  background: transparent;
+  display: flex;
+}
+
+.content .navbar .box.search form input {
+  padding-inline: 10px;
+  border: none;
+  flex: 1;
+  height: 32px;
+  background: transparent;
+}
+
+.content .navbar .box.search form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px !important;
+  height: 32px;
+  background-color: var(--main-color);
+  border: none;
+}
+
+.content .navbar .box.search form button i {
+  font-size: 20px;
+  color: #fff;
+}
+
+.content .navbar .box.information {
+  display: flex;
+  gap: 10px;
+  height: 32px;
+  align-items: center;
+}
+
+.content .navbar .box.information button.btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: rgb(216, 226, 222);
+  color: #555;
+  clip-path: circle();
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content .navbar .box.information button.btn i {
+  font-size: 20px;
+}
+
+.content .navbar .box.information button.btn.user img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content .main {
+  background-color: var(--color-white);
+  padding: 20px;
+  height: 2700px;
+  flex: 1;
+}
+
+.sidebar.closed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.content.sidebar-closed {
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
